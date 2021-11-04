@@ -3,9 +3,9 @@
 <br>
 <br>
 <br>
-<a href="http://localhost:5000/saveRecord"> New Record </a>
+<a href="{{ url_for('saveRecord') }}"> New Record </a>
 
-<form action="http://localhost:5000/filterrecords" method="POST">
+<form action="{{ url_for('filterrecords') }}" method="POST">
 <select name="dept">
 			<option value="HR"> Human Resource </option>
 			<option value="IT"> Information Tech </option>
@@ -28,11 +28,11 @@
 	{%  for record in records %}
 
 		<tr>
-				<td> <a href="http://localhost:5000/personaldetails/{{record.empno}}"> {{ record.name }}</a> </td>
+				<td> <a href="{{ url_for('personalInformation', empno = record.empno) }}"> {{ record.name }}</a> </td>
 				<td> {{record.dept}} </td>
 				<td> {{record.subject}} </td>
-				<td> <a href="http://localhost:5000/editRecord/{{record.empno}}"> edit </a>, 
-					<a href="http://localhost:5000/deleteEmployee/{{record.empno}}"> delete </a>
+				<td> <a href="{{ url_for('editRecordForm', empno = record.empno) }}"> edit </a>, 
+					<a href="{{ url_for('deleteEmployee', empno = record.empno) }}"> delete </a>
 				</td>
 		</tr>
 

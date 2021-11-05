@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import IntegerField, StringField, SelectField, SubmitField
-
+#blah
 class AddEmp(FlaskForm):
     emp_name = StringField("Name")
     salary = IntegerField("Salary")

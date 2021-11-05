@@ -7,7 +7,7 @@ source venv/bin/activate
 
 pip3 install -r requirements.txt
 
-while getopts "c:" options; do
+while getopts "c" options; do
   case ${options} in
     c) create=true;;
   esac

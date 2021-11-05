@@ -7,8 +7,8 @@ source venv/bin/activate
 
 pip3 install -r requirements.txt
 
-export db_uri
-export secretkey
+export db_uri=$db_uri 
+export secretkey=$secretkey
 
 python3 create.py 
 python3 app.py

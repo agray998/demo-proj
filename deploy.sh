@@ -7,5 +7,14 @@ source venv/bin/activate
 
 pip3 install -r requirements.txt
 
-python3 create.py 
+while getopts "c:" options; do
+  case ${options} in
+    c) create=true;;
+  esac
+done
+
+if [ ${create} ]; then
+  python3 create.py
+fi
+
 python3 app.py

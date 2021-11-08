@@ -1,6 +1,9 @@
 from flask import url_for
 from flask_testing import TestCase
-from app import app, db, Employee
+from application import app, db
+from application.models import Employee
+from application.forms import AddEmp, UpdateEmp
+import application.routes
 
 class TestBase(TestCase):
     def create_app(self):

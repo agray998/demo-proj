@@ -17,6 +17,7 @@ if [ ${create} ]; then
   python3 create.py
 fi
 
+echo 'TESTING:'
 python3 -m pytest --cov=application
 
 #python3 app.py

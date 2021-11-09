@@ -29,7 +29,7 @@ User=jenkins
 Environment=db_uri=$db_uri
 Environment=secretkey=$secretkey
 Environment=GUNICORN_CMD_ARGS='--workers=4 --bind=0.0.0.0:5000'
-ExecStart=/bin/sh -c "cd /home/jenkins/.jenkins/workspace/demo-proj && gunicorn app:app"
+ExecStart=/bin/sh -c "cd /home/jenkins/.jenkins/workspace/demo-proj; source venv/bin/activate; gunicorn app:app"
 
 [Install]
 WantedBy=multi-user.target

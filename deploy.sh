@@ -31,7 +31,7 @@ User=jenkins
 Environment=db_uri=$db_uri
 Environment=secretkey=$secretkey
 Environment=path=$gunicornpath
-ExecStart=/bin/sh -c "${path}/gunicorn --workers=4 --bind=0.0.0.0:5000 app:app --daemon"
+ExecStart=/usr/bin/gunicorn '--workers=4 --bind=0.0.0.0:5000 app:app'
 
 [Install]
 WantedBy=multi-user.target

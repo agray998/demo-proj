@@ -28,8 +28,9 @@ Description=Run flask app as systemd
 User=jenkins
 Environment=db_uri=$db_uri
 Environment=secretkey=$secretkey
+Environment=projpath=$WORKSPACE
 Environment=GUNICORN_CMD_ARGS='--workers=4 --bind=0.0.0.0:5000'
-ExecStart=/bin/sh -c "cd /home/jenkins/demo-proj && gunicorn app:app"
+ExecStart=/bin/sh -c "cd ${projpath} && gunicorn app:app"
 
 [Install]
 WantedBy=multi-user.target

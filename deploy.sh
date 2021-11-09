@@ -21,7 +21,6 @@ echo 'TESTING:'
 python3 -m pytest --cov=application --cov-report html
 
 #python3 app.py
-apppath=.
 cat - > /tmp/app.service << EOF
 [Unit]
 Description=Run flask app as systemd
@@ -31,8 +30,7 @@ User=jenkins
 Environment=db_uri=$db_uri
 Environment=secretkey=$secretkey
 Environment=GUNICORN_CMD_ARGS='--workers=4 --bind=0.0.0.0:5000'
-Environment=apppath=$apppath
-ExecStart=/usr/bin/gunicorn ${apppath}/app:app
+ExecStart=/usr/bin/gunicorn app:app
 
 [Install]
 WantedBy=multi-user.target

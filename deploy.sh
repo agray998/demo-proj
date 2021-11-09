@@ -30,8 +30,8 @@ Description=Run flask app as systemd
 User=jenkins
 Environment=db_uri=$db_uri
 Environment=secretkey=$secretkey
-Environment=path=$gunicornpath
-ExecStart=/usr/bin/gunicorn '--workers=4 --bind=0.0.0.0:5000 app:app'
+Environment=GUNICORN_CMD_ARGS='--workers=4 --bind=0.0.0.0:5000'
+ExecStart=/usr/bin/gunicorn app:app
 
 [Install]
 WantedBy=multi-user.target

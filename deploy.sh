@@ -19,7 +19,6 @@ fi
 
 echo 'TESTING:'
 python3 -m pytest --cov=application --cov-report html
-projpath=$(pwd)
 #python3 app.py
 cat - > /tmp/app.service << EOF
 [Unit]
@@ -30,7 +29,7 @@ User=jenkins
 Environment=db_uri=$db_uri
 Environment=secretkey=$secretkey
 Environment=proj=$projpath
-ExecStart=/bin/sh -c "cd ${proj} && gunicorn --workers=4 --bind=0.0.0.0:5000 app:app"
+ExecStart=/bin/sh -c "cd \home\jenkins\demo-proj && gunicorn --workers=4 --bind=0.0.0.0:5000 app:app"
 
 [Install]
 WantedBy=multi-user.target

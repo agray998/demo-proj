@@ -29,7 +29,7 @@ User=jenkins
 Environment=db_uri=$db_uri
 Environment=secretkey=$secretkey
 Environment=proj=$projpath
-ExecStart=/bin/sh -c "cd \home\jenkins\demo-proj && gunicorn --workers=4 --bind=0.0.0.0:5000 app:app"
+ExecStart=/bin/sh -c "cd /home/jenkins/demo-proj && gunicorn --workers=4 --bind=0.0.0.0:5000 app:app"
 
 [Install]
 WantedBy=multi-user.target

@@ -18,6 +18,6 @@ if [ ${create} ]; then
 fi
 
 echo 'TESTING:'
-python3 -m pytest --cov=application --cov-report=term-missing html
+python3 -m pytest --cov=application --cov-report html
 
 #python3 app.py

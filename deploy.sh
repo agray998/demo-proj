@@ -21,4 +21,20 @@ echo 'TESTING:'
 python3 -m pytest --cov=application --cov-report html
 
 #python3 app.py
-gunicorn --workers=4 --bind=0.0.0.0:5000 app:app --daemon
+cat - > /tmp/app.service << EOF
+[Unit]
+Description=Run flask app as systemd
+
+[Service]
+User=jenkins
+Environment=db_uri=$db_uri
+Environment=secretkey=$secretkey
+ExecStart=/bin/sh -c 'gunicorn --workers=4 --bind=0.0.0.0:5000 app:app --daemon'
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+sudo cp /tmp/app.service /etc/systemd/system/app.service
+sudo systemctl daemon-reload
+sudo systemctl start app

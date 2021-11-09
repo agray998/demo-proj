@@ -20,4 +20,4 @@ fi
 echo 'TESTING:'
 python3 -m pytest --cov=application --cov-report html
 
-python3 app.py
+gunicorn -D --workers=4 --bind=0.0.0.0:5000 app:app
